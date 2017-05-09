@@ -175,7 +175,9 @@ const MyAwesomeReactComponent = () => (
    </CardMedia>
    <CardTitle title="Card title" subtitle="Card subtitle" />
    <CardText>
-   <Markdown source={input}/>
+   <div className="markdown-body">
+    <Markdown source={input}/>
+   </div>
    </CardText>
    <CardActions>
      <FlatButton label="Action1" />

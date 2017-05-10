@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "github-markdown-css": "^2.6.0",
+    "material-ui": "^0.18.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-markdown": "^2.5.0"
+    "react-markdown": "^2.5.0",
+    "react-remarkable": "^1.1.1"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"

@@ -3,7 +3,9 @@ import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
+import Markdown from 'react-remarkable';
+import articles from './articles.json';
 
 const Home = () => (
   <div>
@@ -17,34 +19,31 @@ const About = () => (
   </div>
 )
 
-const Topic = ({ match }) => (
+const Article = ({ match }) => (
   <div>
-    <h3>{match.params.topicId}</h3>
+    <h3>{match.params.articleTitle}</h3>
+    <div className="markdown-body">
+     <Markdown source={articles.filter(article => {
+                return match.params.articleTitle === article.title ? article : null;
+             })[0].text}/>
+    </div>
   </div>
 )
 
-const Topics = ({ match }) => (
+const Articles = ({ match }) => (
   <div>
     <h2>Topics</h2>
     <ul>
-      <li>
-        <Link to={`${match.url}/rendering`}>
-          Rendering with React
-        </Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/components`}>
-          Components
-        </Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/props-v-state`}>
-          Props v. State
-        </Link>
-      </li>
+    {articles.map(function(article) {
+       return <li  key={article.id}>
+         <Link to={`${match.url}/${article.title}`}>
+           {article.title}
+         </Link>
+       </li>
+      })}
     </ul>
 
-    <Route path={`${match.url}/:topicId`} component={Topic}/>
+    <Route path={`${match.url}/:articleTitle`} component={Article}/>
     <Route exact path={match.url} render={() => (
       <h3>Please select a topic.</h3>
     )}/>
@@ -57,14 +56,14 @@ const BasicExample = () => (
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
-        <li><Link to="/topics">Topics</Link></li>
+        <li><Link to="/article">Article</Link></li>
       </ul>
 
       <hr/>
 
       <Route exact path="/" component={Home}/>
       <Route path="/about" component={About}/>
-      <Route path="/topics" component={Topics}/>
+      <Route path="/article" component={Articles}/>
     </div>
   </Router>
 )

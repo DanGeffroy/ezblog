@@ -54,16 +54,16 @@ const BasicExample = () => (
   <Router>
     <div>
       <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/article">Article</Link></li>
+        <li><Link to="/ezblog/">Home</Link></li>
+        <li><Link to="/ezblog/about">About</Link></li>
+        <li><Link to="/ezblog/article">Article</Link></li>
       </ul>
 
       <hr/>
 
-      <Route exact path="/" component={Home}/>
-      <Route path="/about" component={About}/>
-      <Route path="/article" component={Articles}/>
+      <Route exact path="/ezblog/" component={Home}/>
+      <Route path="/ezblog/about" component={About}/>
+      <Route path="/ezblog/article" component={Articles}/>
     </div>
   </Router>
 )

@@ -6,16 +6,19 @@
   "dependencies": {
     "github-markdown-css": "^2.6.0",
     "json-loader": "^0.5.4",
+    "markdown-air": "0.0.4",
     "material-ui": "^0.18.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-markdown": "^2.5.0",
     "react-remarkable": "^1.1.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "stringify": "^5.1.0"
   },
   "devDependencies": {
     "gh-pages": "^1.0.0",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "markdown-to-json": "^0.5.1"
   },
   "scripts": {
     "start": "react-scripts start",

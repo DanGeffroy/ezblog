@@ -4,10 +4,11 @@
   "private": true,
   "homepage": "https://dangeffroy.github.io/ezblog",
   "dependencies": {
+    "animate.css": "^3.5.2",
     "github-markdown-css": "^2.6.0",
+    "jquery": "^3.2.1",
     "json-loader": "^0.5.4",
     "markdown-air": "0.0.4",
-    "material-ui": "^0.18.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-markdown": "^2.5.0",

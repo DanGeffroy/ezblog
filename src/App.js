@@ -4,6 +4,8 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+
+import $ from "jquery/dist/jquery.min.js";
 import Markdown from 'react-remarkable';
 import articles from './articles.json';
 
@@ -20,9 +22,18 @@ const About = () => (
 )
 
 const Article = ({ match }) => (
+
   <div>
-    <h3>{match.params.articleTitle}</h3>
-    <div className="markdown-body">
+  <div className="title-hide">
+    <h1 classname="article-title">{match.params.articleTitle}</h1>
+    <h3 className="article-date">{articles.filter(article => {
+               return match.params.articleTitle === article.title ? article : null;
+            })[0].date}</h3>
+  </div>
+
+    <div className="header-article">
+    </div>
+    <div className="markdown-body container">
      <Markdown source={articles.filter(article => {
                 return match.params.articleTitle === article.title ? article : null;
              })[0].text}/>
@@ -36,14 +47,13 @@ const Articles = ({ match }) => (
     <ul>
     {articles.map(function(article) {
        return <li  key={article.id}>
-         <Link to={`${match.url}/${article.title}`}>
+         <Link to={`article/${article.title}`}>
            {article.title}
          </Link>
        </li>
       })}
     </ul>
 
-    <Route path={`${match.url}/:articleTitle`} component={Article}/>
     <Route exact path={match.url} render={() => (
       <h3>Please select a topic.</h3>
     )}/>
@@ -53,18 +63,43 @@ const Articles = ({ match }) => (
 const BasicExample = () => (
   <Router>
     <div>
-      <ul>
-        <li><Link to="/ezblog/">Home</Link></li>
-        <li><Link to="/ezblog/about">About</Link></li>
-        <li><Link to="/ezblog/article">Article</Link></li>
-      </ul>
-
-      <hr/>
-
+      <nav className="nav-fixed">
+        <ul>
+          <li><Link to="/ezblog/">Home</Link></li>
+          <li><Link to="/ezblog/about">About</Link></li>
+          <li><Link to="/ezblog/articles">Articles</Link></li>
+        </ul>
+      </nav>
       <Route exact path="/ezblog/" component={Home}/>
       <Route path="/ezblog/about" component={About}/>
-      <Route path="/ezblog/article" component={Articles}/>
+      <Route path="/ezblog/articles" component={Articles}/>
+      <Route path={`/ezblog/article/:articleTitle`} component={Article}/>
     </div>
   </Router>
 )
+
+
+$(window).scroll(function(){
+
+  if($(this).scrollTop() > 400){
+    $('.title-hide').css({'transform': 'scale(0.20)'});
+    $('.title-hide').css({'opacity': '0'});
+  }
+  else if($(this).scrollTop() > 300){
+    $('.title-hide').css({'transform': 'scale(0.40)'});
+    $('.title-hide').css({'opacity': '0.40'});
+  }
+  else if($(this).scrollTop() > 200){
+    $('.title-hide').css({'transform': 'scale(0.60)'});
+    $('.title-hide').css({'opacity': '0.60'});
+  }
+  else if($(this).scrollTop() > 100){
+    $('.title-hide').css({'transform': 'scale(0.80)'});
+    $('.title-hide').css({'opacity': '0.80'});
+  }
+  else{
+  	$('.title-hide').css({'transform': 'scale(1)'});
+    $('.title-hide').css({'opacity': '1'});
+  }
+});
 export default BasicExample

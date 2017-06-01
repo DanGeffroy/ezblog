@@ -7,6 +7,22 @@ img{
    margin: 0 auto;
    width: 100%;
 }
+.nav-fixed{
+  position: fixed;
+  top: 0;
+  left: 50px;
+}
+.nav-fixed ul li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 20px;
+}
+.nav-fixed ul li a {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
 
 table {
   padding: 0;
@@ -34,3 +50,29 @@ table {
       margin-top: 0; }
     table tr th :last-child, table tr td :last-child {
       margin-bottom: 0; }
+.header-article{
+  height:100vh;
+}
+.article-title{
+    font-size: 5rem;
+}
+.article-date{
+    font-size:1.5rem;
+    margin-top: -20px;
+}
+.title-hide{
+   opacity: 1;
+  position: fixed;
+right: 0;
+bottom:50%;
+width: 100%;
+  text-align: center;
+  transform:  scale(1);
+      -webkit-transition: all 100ms ease-in;
+         -webkit-transform: scale(1);
+         -ms-transition: all 100ms ease-in;
+         -ms-transform: scale(1);
+         -moz-transition: all 100ms ease-in;
+         -moz-transform: scale(1);
+         transition: all 100ms ease-in;
+    }

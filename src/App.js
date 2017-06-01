@@ -44,19 +44,20 @@ const Article = ({ match }) => (
 const Articles = ({ match }) => (
   <div>
     <h2>Topics</h2>
-    <ul>
+    <ul className="articles-list">
     {articles.map(function(article) {
        return <li  key={article.id}>
-         <Link to={`article/${article.title}`}>
+         <h3><Link className="articles-list-link"to={`article/${article.title}`}>
            {article.title}
+         </Link></h3>
+         <p>{article.preview}</p>
+         <Link to={`article/${article.title}`}>
+           see more
          </Link>
+         <hr/>
        </li>
       })}
     </ul>
-
-    <Route exact path={match.url} render={() => (
-      <h3>Please select a topic.</h3>
-    )}/>
   </div>
 )
 

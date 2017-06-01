@@ -23,7 +23,16 @@ img{
   text-decoration: none;
   text-transform: uppercase;
 }
-
+.articles-list{
+   list-style-type: none;
+}
+.articles-list-link{
+  text-decoration: none;
+}
+hr{
+  background-color: #fff;
+border-top: 2px dashed #8c8b8b;
+}
 table {
   padding: 0;
   width: 100%;

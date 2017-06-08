@@ -1,5 +1,7 @@
 body {
   text-align: left;
+  overflow-x: hidden;
+  padding: 15px;
 }
 img{
    border-radius: initial;

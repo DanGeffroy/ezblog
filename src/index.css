@@ -3,6 +3,9 @@ body {
   overflow-x: hidden;
   padding: 15px;
 }
+pre{
+  overflow-x: scroll;
+}
 img{
    border-radius: initial;
    height: initial;

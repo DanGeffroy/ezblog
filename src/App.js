@@ -46,19 +46,38 @@ const Article = ({ match }) => (
     </div>
   </div>
 )
-
-const Articles = ({ match }) => (
+const ArticlesListFiltered = ({ match }) => (
   <div>
-    <h4>All tags</h4>
-    <ul className="tags">
-    {tags.map(function(tag) {
-       return <li key={tag}>
-         <Link className="tag" to={`/ezblog/articles/${tag}`}>
-           {tag}
-         </Link>
+    <h2>Articles</h2>
+    <ul className="articles-list">
+    {articles.filter(article => article.tags.includes(match.params.tag)).map(function(article) {
+       return <li key={article.id}>
+         <h3><Link className="articles-list-link"to={`/ezblog/article/${article.title}`}>
+           {article.title}
+         </Link></h3>
+         <ul className="tags">
+         {article.tags.map(function(tag) {
+            return <li key={tag}>
+              <Link className="tag" to={`/ezblog/articles/${tag}`}>
+                {tag}
+              </Link>
+            </li>
+           })}
+         </ul>
+         <p className="article-preview">{article.preview}</p>
+         <div className="right-align">
+           <Link className="read-more"to={`/ezblog/article/${article.title}`}>
+             read more
+           </Link>
+         </div>
+         <hr/>
        </li>
       })}
     </ul>
+  </div>
+)
+const ArticlesList = ({ match }) => (
+  <div>
     <h2>Articles</h2>
     <ul className="articles-list">
     {articles.map(function(article) {
@@ -85,6 +104,35 @@ const Articles = ({ match }) => (
        </li>
       })}
     </ul>
+  </div>
+)
+const Articles = ({ match }) => (
+  <div>
+    <h4>All tags</h4>
+    <ul className="tags">
+    {tags.map(function(tag) {
+       return <li key={tag}>
+         <Link className="tag" to={`/ezblog/articles/${tag}`}>
+           {tag}
+         </Link>
+       </li>
+      })}
+    </ul>
+    <Route path={`${match.url}/:tag`} component={ArticlesListFiltered}/>
+    <Route exact path={match.url} component={ArticlesList}/>
+  </div>
+)
+
+const NotFound = () => (
+  <div>
+    <div className="glitch_word_box">
+      <div className="line"></div>
+      <h2 id="word" className="glitch-title glitch_word0">404</h2>
+      <h2 id="word1" className="glitch-title glitch_word1">404</h2>
+      <h2 id="word2" className="glitch-title glitch_word2">404</h2>
+    </div>
+    <h1 className="page-not-found">Page not found</h1>
+
   </div>
 )
 

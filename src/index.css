@@ -162,3 +162,125 @@ width: 100%;
          -moz-transform: scale(1);
          transition: all 100ms ease-in;
     }
+
+/*Glitch effect*/
+.page-not-found{
+  text-align: center;
+}
+.glitch-title{
+  font-family: Helvetica, Arial, sans-serif;
+  	text-align: center;
+    font-weight: bolder;
+    font-size: 5em;
+}
+.glitch_word_box {
+				height: 100px;
+				line-height: 100px;
+				position: relative;
+
+				-webkit-animation: disappear 2s linear;
+				-webkit-animation-iteration-count: infinite, infinite;
+				-moz-animation: disappear 2s linear;
+				-moz-animation-iteration-count: infinite, infinite;
+				-o-animation: disappear 2s linear;
+				-o-animation-iteration-count: infinite, infinite;
+}
+
+.glitch_word_box .glitch_word0 {
+				position: absolute;
+				width: 100%;
+}
+
+.glitch_word_box .glitch_word1 {
+				color: red;
+				font-weight: bolder;
+				left: -2px;
+				position: absolute;
+				top: -2px;
+				width: 100%;
+				z-index: -1;
+
+				-webkit-animation: animate_glitch_1 .2s linear;
+				-webkit-animation-iteration-count: infinite;
+				-moz-animation: animate_glitch_1 .2s linear;
+				-moz-animation-iteration-count: infinite;
+				-o-animation: animate_glitch_1 .2s linear;
+				-o-animation-iteration-count: infinite;
+}
+
+.glitch_word_box .glitch_word2 {
+				color: blue;
+				font-weight: bolder;
+				left: 2px;
+				position: absolute;
+				top: 2px;
+				width: 100%;
+				z-index: -1;
+
+				-webkit-animation: animate_glitch_2 .3s linear;
+				-webkit-animation-iteration-count: infinite;
+  		-moz-animation: animate_glitch_2 .3s linear;
+				-moz-animation-iteration-count: infinite;
+  		-o-animation: animate_glitch_2 .3s linear;
+				-o-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes disappear {
+				0% {	opacity: 0;	}
+				2% { opacity: 1; }
+}
+
+@-webkit-keyframes animate_glitch_1 {
+			  	0% { top: 1px; left: 1px; }
+			 	25% { top: 3px; left: 2px;	 }
+		 		50% { top: -1px; left: -4px;	}
+			 	75% { top: 2px; left: 5px;	}
+				100% {	top: 1px; left: -2px;	}
+}
+
+@-webkit-keyframes animate_glitch_2 {
+			  	0% { top: -1px; left: -1px;	}
+ 				25% { top: -3px; left: -2px;	}
+ 				50% { top: 1px; left: 4px; }
+				100% { top: -1px; left: -1px; }
+}
+
+@-moz-keyframes disappear {
+				0% {	opacity: 0;	}
+				2% { opacity: 1; }
+}
+
+@-moz-keyframes animate_glitch_1 {
+			  	0% { top: 1px; left: 1px; }
+			 	25% { top: 3px; left: 2px;	 }
+		 		50% { top: -1px; left: -4px;	}
+			 	75% { top: 2px; left: 5px;	}
+				100% {	top: 1px; left: -2px;	}
+}
+
+@-moz-keyframes animate_glitch_2 {
+			  	0% { top: -1px; left: -1px;	}
+ 				25% { top: -3px; left: -2px;	}
+ 				50% { top: 1px; left: 4px; }
+				100% { top: -1px; left: -1px; }
+}
+
+@-o-keyframes disappear {
+				0% {	opacity: 0;	}
+				2% { opacity: 1; }
+}
+
+@-o-keyframes animate_glitch_1 {
+			  	0% { top: 1px; left: 1px; }
+			 	25% { top: 3px; left: 2px;	 }
+		 		50% { top: -1px; left: -4px;	}
+			 	75% { top: 2px; left: 5px;	}
+				100% {	top: 1px; left: -2px;	}
+}
+
+@-o-keyframes animate_glitch_2 {
+			  	0% { top: -1px; left: -1px;	}
+ 				25% { top: -3px; left: -2px;	}
+ 				50% { top: 1px; left: 4px; }
+				100% { top: -1px; left: -1px; }
+}

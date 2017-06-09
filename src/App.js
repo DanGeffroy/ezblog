@@ -25,7 +25,7 @@ const Article = ({ match }) => (
 
   <div>
   <div className="title-hide">
-    <h1 classname="article-title">{match.params.articleTitle}</h1>
+    <h1 className="article-title">{match.params.articleTitle}</h1>
     <h3 className="article-date">{articles.filter(article => {
                return match.params.articleTitle === article.title ? article : null;
             })[0].date}</h3>
@@ -51,15 +51,22 @@ const Articles = ({ match }) => (
            {article.title}
          </Link></h3>
          <p>{article.preview}</p>
-         <Link to={`article/${article.title}`}>
-           see more
-         </Link>
+         <div className="right-align">
+           <Link className="read-more"to={`article/${article.title}`}>
+             read more
+           </Link>
+         </div>
          <hr/>
        </li>
       })}
     </ul>
   </div>
 )
+
+const ScrollToTop = () => {
+  window.scrollTo(0, 0);
+  return null;
+};
 
 const BasicExample = () => (
   <Router>
@@ -71,6 +78,7 @@ const BasicExample = () => (
           <li><Link to="/ezblog/articles">Articles</Link></li>
         </ul>
       </nav>
+      <Route component={ScrollToTop} />
       <Route exact path="/ezblog/" component={Home}/>
       <Route path="/ezblog/about" component={About}/>
       <Route path="/ezblog/articles" component={Articles}/>

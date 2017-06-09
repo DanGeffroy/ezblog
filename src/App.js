@@ -9,6 +9,12 @@ import $ from "jquery/dist/jquery.min.js";
 import Markdown from 'react-remarkable';
 import articles from './articles.json';
 
+var tags = []
+            .concat
+            .apply([], articles
+              .map(article => article.tags))
+            .filter((elem, index, self) => index === self.indexOf(elem));
+
 const Home = () => (
   <div>
     <h2>Home</h2>
@@ -43,16 +49,35 @@ const Article = ({ match }) => (
 
 const Articles = ({ match }) => (
   <div>
-    <h2>Topics</h2>
+    <h4>All tags</h4>
+    <ul className="tags">
+    {tags.map(function(tag) {
+       return <li key={tag}>
+         <Link className="tag" to={`/ezblog/articles/${tag}`}>
+           {tag}
+         </Link>
+       </li>
+      })}
+    </ul>
+    <h2>Articles</h2>
     <ul className="articles-list">
     {articles.map(function(article) {
-       return <li  key={article.id}>
-         <h3><Link className="articles-list-link"to={`article/${article.title}`}>
+       return <li key={article.id}>
+         <h3><Link className="articles-list-link"to={`/ezblog/article/${article.title}`}>
            {article.title}
          </Link></h3>
-         <p>{article.preview}</p>
+         <ul className="tags">
+         {article.tags.map(function(tag) {
+            return <li key={tag}>
+              <Link className="tag" to={`/ezblog/articles/${tag}`}>
+                {tag}
+              </Link>
+            </li>
+           })}
+         </ul>
+         <p className="article-preview">{article.preview}</p>
          <div className="right-align">
-           <Link className="read-more"to={`article/${article.title}`}>
+           <Link className="read-more"to={`/ezblog/article/${article.title}`}>
              read more
            </Link>
          </div>

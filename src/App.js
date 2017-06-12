@@ -151,13 +151,14 @@ const ScrollToTop = () => {
 const BasicExample = () => (
   <Router>
     <div>
-      <nav className="nav-fixed">
-        <ul>
-          <li><Link to="/ezblog/">Home</Link></li>
-          <li><Link to="/ezblog/about">About</Link></li>
-          <li><Link to="/ezblog/articles">Articles</Link></li>
-        </ul>
-      </nav>
+      <input type="checkbox" id="menu-toggle"/>
+      <label id="trigger" htmlFor="menu-toggle"></label>
+      <label id="burger" htmlFor="menu-toggle"></label>
+      <ul id="menu">
+        <li><Link to="/ezblog/">Home</Link></li>
+        <li><Link to="/ezblog/about">About</Link></li>
+        <li><Link to="/ezblog/articles">Articles</Link></li>
+      </ul>
       <Route component={ScrollToTop} />
       <Route exact path="/ezblog/" component={Home}/>
       <Route path="/ezblog/about" component={About}/>

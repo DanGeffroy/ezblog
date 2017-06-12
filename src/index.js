@@ -5,6 +5,7 @@ import 'markdown-air/css/air.css';
 import 'animate.css/animate.min.css';
 import 'markdown-air/css/air.css';
 import './index.css';
+import './nav.css';
 
 ReactDOM.render(
   <App />,

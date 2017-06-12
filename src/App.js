@@ -145,6 +145,7 @@ const NotFound = () => (
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
+  $('#menu-toggle').prop('checked', false);
   return null;
 };
 

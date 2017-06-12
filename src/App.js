@@ -17,7 +17,14 @@ var tags = []
 
 const Home = () => (
   <div>
-    <h2>Home</h2>
+  <div className="title-hide homepage">
+    <h1 className="article-title">ezblog</h1>
+    <h3 className="article-date">a front end only blog</h3>
+    <div className="spacer"></div>
+     <Link className="btn-white" to={`/ezblog/articles/`}>
+       see articles here
+     </Link>
+  </div>
   </div>
 )
 

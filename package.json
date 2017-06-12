@@ -5,6 +5,7 @@
   "homepage": "https://dangeffroy.github.io/ezblog",
   "dependencies": {
     "animate.css": "^3.5.2",
+    "colors": "^1.1.2",
     "github-markdown-css": "^2.6.0",
     "jquery": "^3.2.1",
     "json-loader": "^0.5.4",
@@ -27,6 +28,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "convert" : "node converter.js"
   }
 }

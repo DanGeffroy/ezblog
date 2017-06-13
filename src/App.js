@@ -33,7 +33,11 @@ const About = () => (
     <h2>About</h2>
   </div>
 )
-
+function scrollToArticle(){
+  $('html, body').animate({
+            scrollTop: $(".markdown-body").offset().top
+        }, 800);
+}
 const Article = ({ match }) => (
 
   <div>
@@ -43,6 +47,12 @@ const Article = ({ match }) => (
                return match.params.articleTitle === article.title ? article : null;
             })[0].date}</h3>
   </div>
+  <div className="arrow-container animated fadeInDown" onClick={scrollToArticle}>
+      <div className="arrow-2">
+        <i className="fa fa-angle-down"></i>
+      </div>
+      <div className="arrow-1 animated hinge infinite zoomIn"></div>
+    </div>
 
     <div className="header-article">
     </div>

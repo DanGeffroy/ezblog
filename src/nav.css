@@ -1,20 +1,21 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 
 @keyframes checked-anim {
-    50% {
-        width: 300px;
-        height: 300px;
-    }
-    100% {
-        width: 300px;
-        height: 300px;
-    }
+  50% {
+     width: 3000px;
+     height: 3000px;
+ }
+ 100% {
+     width: 100%;
+     height: 100%;
+     border-radius: 0;
+ }
 }
 @keyframes not-checked-anim {
-    0% {
-        width: 300px;
-        height: 300px;
-    }
+  0% {
+      width: 3000px;
+      height: 3000px;
+  }
 }
 #menu li {
     margin: 75px 0 -55px 0;
@@ -30,7 +31,7 @@
 }
 #menu a {
     margin: 75px 0 -55px 0;
-    color: #3498db;
+    color: white;
     font: 14pt "Roboto", sans-serif;
     font-weight: 700;
     line-height: 1.8;
@@ -49,15 +50,14 @@
 }
 
 #trigger, #burger, #burger:before, #burger:after {
-    position: fixed;
-    top: 35px;
-    left: 25px;
-    background: #03A9F4;
-    width: 30px;
-    height: 5px;
-    transition: .2s ease;
-    cursor: pointer;
-    z-index: 1;
+position: fixed;
+ top: 10px;
+ left: 10px;
+ width: 30px;
+ height: 5px;
+ transition: .2s ease;
+ cursor: pointer;
+ z-index: 1;
 }
 #trigger {
     z-index: 1001;
@@ -65,21 +65,26 @@
     background: none;
 }
 #burger{
+  background-color: white;
     z-index: 1001;
 }
 #burger:before {
-    content: " ";
-    top: 25px;
+  background-color: white;
+  content: " ";
+ top: 20px;
+ left: 10px;
 }
 #burger:after {
-    content: " ";
-    top: 45px;
+  background-color:white;
+  content: " ";
+ top: 30px;
+ left: 10px;
 }
 #menu-toggle{
     z-index: 1001;
 }
 #menu-toggle:checked + #trigger + #burger {
-    top: 35px;
+    top: 20px;
     transform: rotate(180deg);
     transition: transform .2s ease;
 }
@@ -102,10 +107,10 @@
     z-index: 1000;
     position: fixed;
     margin: 0; padding: 0;
-    width: 110px;
-    height: 110px;
-    background-color: #fff;
-    border-bottom-right-radius: 100%;
+    width: 70px;
+    height: 70px;
+    background-color: #3498db;
+    border-bottom-right-radius: 150%;
     box-shadow: 0 2px 5px rgba(0,0,0,0.26);
     animation: not-checked-anim .2s both;
     transition: .2s;

@@ -64,6 +64,12 @@ $ npm install
 $ npm run convert
 $ npm run deploy
 ```
+<p align="center">
+    <img src="http://www.reactiongifs.com/wp-content/uploads/2013/02/aaaand-send.gif">
+</p>
 
 ## About the project 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).  
+
+  
+Made with :heart: by Dan

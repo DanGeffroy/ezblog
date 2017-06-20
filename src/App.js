@@ -1,165 +1,15 @@
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import {  BrowserRouter as Router,  Route,  Link} from 'react-router-dom';
 
-import $ from "jquery/dist/jquery.min.js";
-import Markdown from 'react-remarkable';
-import articles from './articles.json';
+import Home from './components/Home.js'
+import About from './components/About.js'
+import Article from './components/Article.js'
+import Articles from './components/Articles.js'
 
-var tags = []
-            .concat
-            .apply([], articles
-              .map(article => article.tags))
-            .filter((elem, index, self) => index === self.indexOf(elem));
+import ScrollToTop from './animation/ScrollToTop.js'
+import './animation/ScrollScale.js';
 
-const Home = () => (
-  <div>
-  <div className="title-hide homepage">
-    <h1 className="article-title">ezblog</h1>
-    <h3 className="article-date">a front end only blog</h3>
-    <div className="spacer"></div>
-     <Link className="btn-white" to={`/ezblog/articles/`}>
-       see articles here
-     </Link>
-  </div>
-  </div>
-)
-
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
-)
-function scrollToArticle(){
-  $('html, body').animate({
-            scrollTop: $(".markdown-body").offset().top
-        }, 800);
-}
-const Article = ({ match }) => (
-
-  <div>
-  <div className="title-hide">
-    <h1 className="article-title">{match.params.articleTitle}</h1>
-    <h3 className="article-date">{articles.filter(article => {
-               return match.params.articleTitle === article.title ? article : null;
-            })[0].date}</h3>
-  </div>
-  <div className="arrow-container animated fadeInDown" onClick={scrollToArticle}>
-      <div className="arrow-2">
-        <i className="fa fa-angle-down"></i>
-      </div>
-      <div className="arrow-1 animated hinge infinite zoomIn"></div>
-    </div>
-
-    <div className="header-article">
-    </div>
-    <div className="markdown-body container">
-     <Markdown source={articles.filter(article => {
-                return match.params.articleTitle === article.title ? article : null;
-             })[0].text}/>
-    </div>
-  </div>
-)
-const ArticlesListFiltered = ({ match }) => (
-  <div>
-    <h2>Articles</h2>
-    <ul className="articles-list">
-    {articles.filter(article => article.tags.includes(match.params.tag)).map(function(article) {
-       return <li key={article.id}>
-         <h3><Link className="articles-list-link"to={`/ezblog/article/${article.title}`}>
-           {article.title}
-         </Link></h3>
-         <ul className="tags">
-         {article.tags.map(function(tag) {
-            return <li key={tag}>
-              <Link className="tag" to={`/ezblog/articles/${tag}`}>
-                {tag}
-              </Link>
-            </li>
-           })}
-         </ul>
-         <p className="article-preview">{article.preview}</p>
-         <div className="right-align">
-           <Link className="read-more"to={`/ezblog/article/${article.title}`}>
-             read more
-           </Link>
-         </div>
-         <hr/>
-       </li>
-      })}
-    </ul>
-  </div>
-)
-const ArticlesList = ({ match }) => (
-  <div>
-    <h2>Articles</h2>
-    <ul className="articles-list">
-    {articles.map(function(article) {
-       return <li key={article.id}>
-         <h3><Link className="articles-list-link"to={`/ezblog/article/${article.title}`}>
-           {article.title}
-         </Link></h3>
-         <ul className="tags">
-         {article.tags.map(function(tag) {
-            return <li key={tag}>
-              <Link className="tag" to={`/ezblog/articles/${tag}`}>
-                {tag}
-              </Link>
-            </li>
-           })}
-         </ul>
-         <p className="article-preview">{article.preview}</p>
-         <div className="right-align">
-           <Link className="read-more"to={`/ezblog/article/${article.title}`}>
-             read more
-           </Link>
-         </div>
-         <hr/>
-       </li>
-      })}
-    </ul>
-  </div>
-)
-const Articles = ({ match }) => (
-  <div>
-    <h4>All tags</h4>
-    <ul className="tags">
-    {tags.map(function(tag) {
-       return <li key={tag}>
-         <Link className="tag" to={`/ezblog/articles/${tag}`}>
-           {tag}
-         </Link>
-       </li>
-      })}
-    </ul>
-    <Route path={`${match.url}/:tag`} component={ArticlesListFiltered}/>
-    <Route exact path={match.url} component={ArticlesList}/>
-  </div>
-)
-
-const NotFound = () => (
-  <div>
-    <div className="glitch_word_box">
-      <div className="line"></div>
-      <h2 id="word" className="glitch-title glitch_word0">404</h2>
-      <h2 id="word1" className="glitch-title glitch_word1">404</h2>
-      <h2 id="word2" className="glitch-title glitch_word2">404</h2>
-    </div>
-    <h1 className="page-not-found">Page not found</h1>
-
-  </div>
-)
-
-const ScrollToTop = () => {
-  window.scrollTo(0, 0);
-  $('#menu-toggle').prop('checked', false);
-  return null;
-};
-
-const BasicExample = () => (
+const AppRouter = () => (
   <Router>
     <div>
       <input type="checkbox" id="menu-toggle"/>
@@ -179,28 +29,4 @@ const BasicExample = () => (
   </Router>
 )
 
-
-$(window).scroll(function(){
-
-  if($(this).scrollTop() > 400){
-    $('.title-hide').css({'transform': 'scale(0.20)'});
-    $('.title-hide').css({'opacity': '0'});
-  }
-  else if($(this).scrollTop() > 300){
-    $('.title-hide').css({'transform': 'scale(0.40)'});
-    $('.title-hide').css({'opacity': '0.40'});
-  }
-  else if($(this).scrollTop() > 200){
-    $('.title-hide').css({'transform': 'scale(0.60)'});
-    $('.title-hide').css({'opacity': '0.60'});
-  }
-  else if($(this).scrollTop() > 100){
-    $('.title-hide').css({'transform': 'scale(0.80)'});
-    $('.title-hide').css({'opacity': '0.80'});
-  }
-  else{
-  	$('.title-hide').css({'transform': 'scale(1)'});
-    $('.title-hide').css({'opacity': '1'});
-  }
-});
-export default BasicExample
+export default AppRouter

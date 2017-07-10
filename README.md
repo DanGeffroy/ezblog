@@ -1,5 +1,13 @@
+<p align="center">
+    <img src="public/logo.png">
+</p>
+
 # EZBLOG
-A simple blog without backend, articles will be stored in a simple json file.
+A simple blog without backend, write your articles in mardown and deploy the app everywhere (in my case gh-pages).
+
+<p align="center">
+    <img src="preview.png">
+</p>
 
 ## How to use it ?
 ### Project dependencies

@@ -6,7 +6,8 @@ const ArticlesListFiltered = ({ match }) => (
   <div>
     <h2>Articles</h2>
     <ul className="articles-list">
-    {articles.filter(article => article.tags.includes(match.params.tag)).map(function(article) {
+    {
+    articles.filter(article => (match.params.tag) ? article.tags.includes(match.params.tag)).map(function(article) {
        return <li key={article.id}>
          <h3><Link className="articles-list-link"to={`/ezblog/article/${article.title}`}>
            {article.title}
